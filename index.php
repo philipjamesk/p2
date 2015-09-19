@@ -19,14 +19,25 @@
   </head>
   <body>
     <?php require('generator.php');?>
-    <?php if($password !== ''):?>
-      <div id="password">
-        <p><?=$password?></p>
-      </div>
-    <?php endif;?>  
+ 
     <form action="index.php" method="POST">
+      
+      <label>Number of words: <input type="text" name="numberOfWords" value=<?=$numberOfWords?>></label><br>
+      <label>Minimum Word Length: <input type="text" name="min" value=<?=$minLength?>></label><br>
+      <label>Maximum Word Length: <input type="text" name="max" value=<?=$maxLength?>></label><br>
       <input type="submit" value="Generate Password">
     </form>
+
+    <div class="row">
+      <div class="col-lg-3"></div>
+      <div class="col-lg-6">
+        <div id="password">
+          <p><?=$password?></p>
+        </div>
+      </div>
+      <div class="col-lg-3"></div>
+    </div> <!-- end row -->
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
