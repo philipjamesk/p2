@@ -22,9 +22,9 @@
  
     <form action="index.php" method="POST">
       
-      <label>Number of words: <input type="text" name="numberOfWords" value=<?=$numberOfWords?>></label><br>
-      <label>Minimum Word Length: <input type="text" name="min" value=<?=$minLength?>></label><br>
-      <label>Maximum Word Length: <input type="text" name="max" value=<?=$maxLength?>></label><br>
+      <label>Number of words (4-12): <input type="text" name="numberOfWords" value=<?=$numberOfWords?>></label><br>
+      <label>Shortest words (min 4): <input type="text" name="min" value=<?=$minLength?>></label><br>
+      <label>Longest words (max 12): <input type="text" name="max" value=<?=$maxLength?>></label><br>
       <input type="submit" value="Generate Password">
     </form>
 
