@@ -9,6 +9,8 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -20,28 +22,29 @@
   <body>
     <?php require('generator.php');?>
     <div class="row">
-      <div class="col-lg-2"></div>
-      <div class="col-lg-8">
+      <div class="col-lg-3"></div>
+      <div class="col-lg-6">
         <form action="index.php" method="POST">
           <label>Number of words (4-12): <input type="text" name="numberOfWords" value=<?=$numberOfWords?>></label><br>
           <label>Shortest words (min 4): <input type="text" name="min" value=<?=$minLength?>></label><br>
           <label>Longest words (max 12): <input type="text" name="max" value=<?=$maxLength?>></label><br>
           <input type="checkbox" name="addNumber" <?=$numCheck?>><label for="addNumber">Add a number </label><br>
           <input type="checkbox" name="addChar" <?=$charCheck?>><label for="addChar">Add a random character </label><br>
+          <input 
           <input type="submit" value="Generate Password">
         </form>
       </div>
-      <div class="col-lg-2"></div>
+      <div class="col-lg-3"></div>
     </div> <!-- end row -->
 
     <div class="row">
-      <div class="col-lg-3"></div>
-      <div class="col-lg-6">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10">
         <div id="password">
           <p><?=$password?></p>
         </div>
       </div>
-      <div class="col-lg-3"></div>
+      <div class="col-lg-1"></div>
     </div> <!-- end row -->
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

@@ -65,7 +65,7 @@
     }
 
     if (isset($_POST['addChar'])) {
-      $password = $password . $randomChars[rand(0,count($randomChars))];
+      $password = $password . $randomChars[rand(0,count($randomChars)-1)];
       $charCheck = 'checked';
     }
 
