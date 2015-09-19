@@ -21,32 +21,40 @@
   </head>
   <body>
     <?php require('generator.php');?>
-    <div class="row">
-      <div class="col-lg-3"></div>
-      <div class="col-lg-6">
-        <form action="index.php" method="POST">
-          <label>Number of words (4-12): <input type="text" name="numberOfWords" value=<?=$numberOfWords?>></label><br>
-          <label>Shortest words (min 4): <input type="text" name="min" value=<?=$minLength?>></label><br>
-          <label>Longest words (max 12): <input type="text" name="max" value=<?=$maxLength?>></label><br>
-          <input type="checkbox" name="addNumber" <?=$numCheck?>><label for="addNumber">Add a number </label><br>
-          <input type="checkbox" name="addChar" <?=$charCheck?>><label for="addChar">Add a random character </label><br>
-          <input 
-          <input type="submit" value="Generate Password">
-        </form>
-      </div>
-      <div class="col-lg-3"></div>
-    </div> <!-- end row -->
-
-    <div class="row">
-      <div class="col-lg-1"></div>
-      <div class="col-lg-10">
-        <div id="password">
-          <p><?=$password?></p>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+          <form action="index.php" method="POST">
+            <label>Number of words (4-12): <input type="text" name="numberOfWords" value=<?=$numberOfWords?>></label><br>
+            <label>Shortest words (min 4): <input type="text" name="min" value=<?=$minLength?>></label><br>
+            <label>Longest words (max 12): <input type="text" name="max" value=<?=$maxLength?>></label><br>
+            <input type="checkbox" name="addNumber" <?=$numCheck?>><label for="addNumber">Add a number </label><br>
+            <input type="checkbox" name="addChar" <?=$charCheck?>><label for="addChar">Add a random character </label><br>
+            <input 
+            <input type="submit" value="Generate Password">
+          </form>
+        </div>
+        <div class="col-lg-3"></div>
+      </div> <!-- end row -->
+      <?php if($_POST): ?>
+      <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10">
+          <div id="password">
+            <p><?=$password?></p>
+          </div>
+        </div>
+        <div class="col-lg-1"></div>
+      </div> <!-- end row -->
+      <?php endif; ?>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="comicheader"><h2><a href="https://xkcd.com/936/">xkcd comic</a></h2></div>
+          <img class="img-responsive comic" src="http://imgs.xkcd.com/comics/password_strength.png" alt="xkcd password comic">
         </div>
       </div>
-      <div class="col-lg-1"></div>
-    </div> <!-- end row -->
-
+    </div> <!-- end container-fluid -->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
