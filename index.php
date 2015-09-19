@@ -19,14 +19,20 @@
   </head>
   <body>
     <?php require('generator.php');?>
- 
-    <form action="index.php" method="POST">
-      
-      <label>Number of words (4-12): <input type="text" name="numberOfWords" value=<?=$numberOfWords?>></label><br>
-      <label>Shortest words (min 4): <input type="text" name="min" value=<?=$minLength?>></label><br>
-      <label>Longest words (max 12): <input type="text" name="max" value=<?=$maxLength?>></label><br>
-      <input type="submit" value="Generate Password">
-    </form>
+    <div class="row">
+      <div class="col-lg-2"></div>
+      <div class="col-lg-8">
+        <form action="index.php" method="POST">
+          <label>Number of words (4-12): <input type="text" name="numberOfWords" value=<?=$numberOfWords?>></label><br>
+          <label>Shortest words (min 4): <input type="text" name="min" value=<?=$minLength?>></label><br>
+          <label>Longest words (max 12): <input type="text" name="max" value=<?=$maxLength?>></label><br>
+          <input type="checkbox" name="addNumber" <?=$numCheck?>><label for="addNumber">Add a number </label><br>
+          <input type="checkbox" name="addChar" <?=$charCheck?>><label for="addChar">Add a random character </label><br>
+          <input type="submit" value="Generate Password">
+        </form>
+      </div>
+      <div class="col-lg-2"></div>
+    </div> <!-- end row -->
 
     <div class="row">
       <div class="col-lg-3"></div>

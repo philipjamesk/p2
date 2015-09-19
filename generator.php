@@ -4,12 +4,20 @@
   define("DEFAULT_MIN", "4");
   define("DEFAULT_MAX", "12");
 
-  #set defaults 
+  # set defaults 
   $password='';
   $numberOfWords = DEFAULT_WORDS;
   $minLength = DEFAULT_MIN;
   $maxLength = DEFAULT_MAX;
 
+  # check box settings
+  $numCheck = '';
+  $charCheck = '';
+
+  # random character array
+  $randomChars = ['~','!','@','$','%','^','&','*','(',')','+','=','{','}','[',']','|',':',';','<','>','?'];
+
+  # load and unserialize wordlist from file
   $words = file_get_contents('wordlist.txt');
   $words = unserialize($words);
   
@@ -34,7 +42,7 @@
       $maxLength = $minLength;
     }
 
-
+    # generate the word portion of the password
     # pick for words at random from the list
     for ($i=1; $i <= $numberOfWords; $i++) { 
       do {
@@ -50,5 +58,17 @@
       $password = $password . '-';
       }
     }
+
+    if (isset($_POST['addNumber'])) {
+      $password = (string)rand(0,9) . $password;
+      $numCheck = 'checked';
+    }
+
+    if (isset($_POST['addChar'])) {
+      $password = $password . $randomChars[rand(0,count($randomChars))];
+      $charCheck = 'checked';
+    }
+
+    // var_dump($_POST);
   }
 ?>
