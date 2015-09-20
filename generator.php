@@ -11,6 +11,7 @@
   $maxLength = DEFAULT_MAX;
   $numbers = 2;
   $chars = 2;
+  $seperator = '-';
   $case = 'camelcase';
 
   # check box settings
@@ -46,6 +47,19 @@
     }
 
     $case = $_POST['case'];
+    $seperator = $_POST['seperator'];
+    
+
+    if (isset($_POST['addNumber'])) {
+      $numbers = $_POST['numbers'];
+      $number = '';
+      for ($i = 0; $i < $numbers; $i++) { 
+        $number = (string)rand(0,9) . $number;
+      }
+      $password = $number . $seperator;
+      $numCheck = 'checked';
+    }
+    
     # generate the word portion of the password
     # pick for words at random from the list
     for ($i = 0; $i < $numberOfWords; $i++) { 
@@ -58,30 +72,21 @@
       $word = setCase($words[$index], $i);
 
       $password = $password . $word;
-      
-      # do not add a hyphen after last word
-      if ($i < $numberOfWords - 1) {  
-      $password = $password . '-';
-      }
-    }
 
-    if (isset($_POST['addNumber'])) {
-      $numbers = $_POST['numbers'];
-      for ($i = 0; $i < $numbers; $i++) { 
-        $password = (string)rand(0,9) . $password;
+      if ($i < $numberOfWords - 1) {
+        $password = $password . $seperator;
       }
-      $numCheck = 'checked';
     }
 
     if (isset($_POST['addChar'])) {
       $chars = $_POST['chars'];
+      $char = '';
       for ($i = 0; $i < $chars; $i++) { 
-        $password = $password . $randomChars[rand(0,count($randomChars)-1)];
+        $char = $randomChars[rand(0,count($randomChars)-1)] . $char;
       }
+      $password = $password . $seperator . $char;
       $charCheck = 'checked';
     }
-
-    // var_dump($_POST);
   }
 
   # functions 
@@ -97,5 +102,6 @@
     } else {
       return strtoupper($word);
     }
-  }  
+  }
+ 
 ?>
