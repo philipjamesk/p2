@@ -9,6 +9,8 @@
   $numberOfWords = DEFAULT_WORDS;
   $minLength = DEFAULT_MIN;
   $maxLength = DEFAULT_MAX;
+  $numbers = 2;
+  $chars = 2;
 
   # check box settings
   $numCheck = '';
@@ -46,7 +48,7 @@
     # pick for words at random from the list
     for ($i=1; $i <= $numberOfWords; $i++) { 
       do {
-        $index = rand(0,count($words));
+        $index = rand(0,count($words) - 1);
         # if the word does fall between the min and max lengths pick a new one
       } while (!(strlen($words[$index]) >= $minLength AND strlen($words[$index]) <= $maxLength));
 
@@ -60,12 +62,19 @@
     }
 
     if (isset($_POST['addNumber'])) {
-      $password = (string)rand(0,9) . $password;
+      $numbers = $_POST['numbers'];
+      for ($i=0; $i < $numbers; $i++) { 
+        $password = (string)rand(0,9) . $password;
+      }
       $numCheck = 'checked';
+      
     }
 
     if (isset($_POST['addChar'])) {
-      $password = $password . $randomChars[rand(0,count($randomChars)-1)];
+      $chars = $_POST['chars'];
+      for ($i=0; $i < $chars; $i++) { 
+        $password = $password . $randomChars[rand(0,count($randomChars)-1)];
+      }
       $charCheck = 'checked';
     }
 
