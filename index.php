@@ -70,6 +70,12 @@
                 <option value="9" <?php echo $chars == '10' ? 'selected="selected"' : ''; ?>>10</option>
               </select>
             </div>
+            <div class="form-group">
+              <label>What case would you like?</label><br>
+              <label class="radio-inline"><input type="radio" name="case" value="lowercase" <?php echo $case == 'lowercase' ? 'checked' : ''; ?>>lowercase</label>
+              <label class="radio-inline"><input type="radio" name="case" value="camelcase" <?php echo $case == 'camelcase' ? 'checked' : ''; ?>>camelCase</label>
+              <label class="radio-inline"><input type="radio" name="case" value="uppercase" <?php echo $case == 'uppercase' ? 'checked' : ''; ?>>UPPERCASE</label>
+            </div>
             <button class="btn btn-default" type="submit">Generate Password</button>
           </form>
         </div>
