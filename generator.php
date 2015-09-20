@@ -21,12 +21,13 @@
   # random character array
   $randomChars = ['~','!','@','$','%','^','&','*','(',')','+','=','{','}','[',']','|',':',';','<','>','?'];
 
-  # load and unserialize wordlist from file
-  $words = file_get_contents('wordlist.txt');
-  $words = unserialize($words);
-
   # the POST has taken place
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    
+    # load and unserialize wordlist from file
+    $words = file_get_contents('wordlist.txt');
+    $words = unserialize($words);
+
 
     # check user entered values, if they are not valid the default stays
     if (is_numeric($_POST['numberOfWords']) AND ($_POST['numberOfWords'] >= 4 AND $_POST['numberOfWords'] <= 12)) {
@@ -50,6 +51,7 @@
     $seperator = $_POST['seperator'];
     
 
+    # add string of random numbers if selected by user
     if (isset($_POST['addNumber'])) {
       $numbers = $_POST['numbers'];
       $number = '';
@@ -68,16 +70,19 @@
         # if the word does fall between the min and max lengths pick a new one
       } while (!(strlen($words[$index]) >= $minLength AND strlen($words[$index]) <= $maxLength));
 
-      # concatenate add word to password
+      # set the case of the word
       $word = setCase($words[$index], $i);
 
+      #concatenate word to password 
       $password = $password . $word;
 
+      #add seperator
       if ($i < $numberOfWords - 1) {
         $password = $password . $seperator;
       }
     }
 
+    # add string of random characters if selected by user
     if (isset($_POST['addChar'])) {
       $chars = $_POST['chars'];
       $char = '';
@@ -89,17 +94,22 @@
     }
   }
 
-  # functions 
+  /**
+   *  @desc converts selected word to user selected case 
+   *  @param string $word - word to be converted
+   *  @param int $wordNumber - position of word to be converted 
+   *  @return string - converted word
+  */
   function setCase($word, $wordNumber) {
     if ($GLOBALS['case'] == 'lowercase') {
-      return strtolower($word);
+      return strtolower($word); // converted to lowercase in case future word list contains capital letters
     } elseif ($GLOBALS['case'] == 'camelcase') {
-      $word = strtolower($word);
-      if ($wordNumber > 0) {
-        $word = ucfirst($word);
+      $word = strtolower($word); 
+      if ($wordNumber > 0) { // do not capitilize first word in camelCase
+        $word = ucfirst($word); 
       }
       return $word;
-    } else {
+    } else { // uppercase is selected
       return strtoupper($word);
     }
   }

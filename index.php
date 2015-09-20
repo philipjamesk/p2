@@ -51,7 +51,7 @@
                 <option value="7" <?php echo $numbers == '7' ? 'selected="selected"' : ''; ?>>7</option>
                 <option value="8" <?php echo $numbers == '8' ? 'selected="selected"' : ''; ?>>8</option>
                 <option value="9" <?php echo $numbers == '9' ? 'selected="selected"' : ''; ?>>9</option>
-                <option value="9" <?php echo $numbers == '10' ? 'selected="selected"' : ''; ?>>10</option>
+                <option value="10" <?php echo $numbers == '10' ? 'selected="selected"' : ''; ?>>10</option>
               </select>
             </div>
             <div class="form-group">
@@ -67,7 +67,7 @@
                 <option value="7" <?php echo $chars == '7' ? 'selected="selected"' : ''; ?>>7</option>
                 <option value="8" <?php echo $chars == '8' ? 'selected="selected"' : ''; ?>>8</option>
                 <option value="9" <?php echo $chars == '9' ? 'selected="selected"' : ''; ?>>9</option>
-                <option value="9" <?php echo $chars == '10' ? 'selected="selected"' : ''; ?>>10</option>
+                <option value="10" <?php echo $chars == '10' ? 'selected="selected"' : ''; ?>>10</option>
               </select>
             </div>
             <div class="form-group">
