@@ -22,9 +22,34 @@
   <body>
     <?php require('generator.php');?>
     <div class="container-fluid">
+    <?php if(!$_POST): ?>
       <div class="row">
         <div class="col-lg-3"></div>
         <div class="col-lg-6">
+          <div class="panel" id="top">
+            <h1>How secure is your password?</h1>
+            <p>You clever password may not be as secure as you think. See <a href="#example">the comic below</a> for more information. After that, you can use our free password generator to create an xkcd style password. The password is generated use a Google compiled list of 10,000 common English words. For added security, add a random number to the start, some random characters to the end, or switch up the seperator between words and the word case.</p>
+          </div>
+        </div>
+        <div class="col-lg-3"></div>
+      </div> <!-- end row -->
+      <?php endif; ?>
+      <?php if($_SERVER['REQUEST_METHOD'] == 'POST'): ?> <!-- row containing password only appears after form is submitted -->
+      <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10">
+          <div id="password">
+            <p><?=$password?></p>
+          </div>
+        </div>
+        <div class="col-lg-1"></div>
+      </div> <!-- end row -->
+      <?php endif; ?>
+      <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4"><div class="well well-sm">
+          <h2>Password Generator</h2>
+          <h4>(invalid values will be replaced by defaults)</h4>
           <form action="index.php" method="POST">
             <div class="form-group">
               <label>Number of words (4-12):</label>
@@ -40,7 +65,7 @@
             </div>
             <div class="form-group">
               <input type="checkbox" name="addNumber" <?=$numCheck?>>
-              <label for="addNumber">Add a number - How many digits: </label>
+              <label for="addNumber">Random number
               <select name="numbers">
                 <option value="1" <?php echo $numbers == '1' ? 'selected="selected"' : ''; ?>>1</option>
                 <option value="2" <?php echo $numbers == '2' ? 'selected="selected"' : ''; ?>>2</option>
@@ -53,10 +78,11 @@
                 <option value="9" <?php echo $numbers == '9' ? 'selected="selected"' : ''; ?>>9</option>
                 <option value="10" <?php echo $numbers == '10' ? 'selected="selected"' : ''; ?>>10</option>
               </select>
+              digits</label>
             </div>
             <div class="form-group">
               <input type="checkbox" name="addChar" <?=$charCheck?>>
-              <label for="addChar">Add a random characters - How many: </label>
+              <label for="addChar">Random characters
               <select name="chars">
                 <option value="1" <?php echo $chars == '1' ? 'selected="selected"' : ''; ?>>1</option>
                 <option value="2" <?php echo $chars == '2' ? 'selected="selected"' : ''; ?>>2</option>
@@ -69,6 +95,7 @@
                 <option value="9" <?php echo $chars == '9' ? 'selected="selected"' : ''; ?>>9</option>
                 <option value="10" <?php echo $chars == '10' ? 'selected="selected"' : ''; ?>>10</option>
               </select>
+              characters</label>
             </div>
             <div class="form-group">
               <label for="seperator">Chose a seperator:</label>
@@ -76,6 +103,7 @@
                 <option value="" <?php echo $seperator == '' ? 'selected="selected"' : ''; ?>>(none) ''</option>
                 <option value=" " <?php echo $seperator == ' ' ? 'selected="selected"' : ''; ?>>(space) ' '</option>
                 <option value="-" <?php echo $seperator == '-' ? 'selected="selected"' : ''; ?>>hyphen '-'</option>
+                <option value="." <?php echo $seperator == '.' ? 'selected="selected"' : ''; ?>>dot '.'</option>
               </select>
             </div>
             <div class="form-group">
@@ -87,27 +115,21 @@
               <label class="radio-inline">
                 <input type="radio" name="case" value="uppercase" <?php echo $case == 'uppercase' ? 'checked' : ''; ?>>UPPERCASE</label>
             </div>
-            <button class="btn btn-default" type="submit">Generate Password</button>
+            <button class="btn btn-default center-block" type="submit"3>Generate Password</button>
           </form>
-        </div>
-        <div class="col-lg-3"></div>
+        </div></div>
+        <div class="col-lg-4"></div>
       </div> <!-- end row -->
-      <?php if($_POST): ?>
-      <div class="row">
-        <div class="col-lg-1"></div>
-        <div class="col-lg-10">
-          <div id="password">
-            <p><?=$password?></p>
-          </div>
-        </div>
-        <div class="col-lg-1"></div>
-      </div> <!-- end row -->
-      <?php endif; ?>
       <div class="row">
         <div class="col-lg-3"></div>
         <div class="col-lg-6">
-          <div class="comicheader"><h2><a href="https://xkcd.com/936/">xkcd comic</a></h2></div>
-          <img class="img-responsive comic" src="http://imgs.xkcd.com/comics/password_strength.png" alt="xkcd password comic">
+          <div id="example">
+            <div class="comicheader">
+              <h2><a href="https://xkcd.com/936/">xkcd comic</a></h2>
+              <p><a href="#top">Return to top</a></p>
+            </div>
+            <img class="img-responsive comic" src="http://imgs.xkcd.com/comics/password_strength.png" alt="xkcd password comic">
+          </div>
         </div>
       <div class="col-lg-3"></div>
       </div>
