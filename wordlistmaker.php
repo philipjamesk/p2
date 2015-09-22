@@ -23,5 +23,3 @@
   $serializedWords = serialize($words);
   
   file_put_contents('wordlist.txt', print_r($serializedWords, true));
-
-?>

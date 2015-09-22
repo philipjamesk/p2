@@ -113,5 +113,3 @@
       return strtoupper($word);
     }
   }
- 
-?>
