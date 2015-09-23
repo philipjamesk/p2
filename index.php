@@ -83,7 +83,7 @@
             <div class="form-group">
               <input type="checkbox" name="addChar" <?=$charCheck?>>
               <label for="addChar">Random characters
-              <select name="chars" is="addChar">
+              <select name="chars" id="addChar">
                 <option value="1" <?php echo $chars == '1' ? 'selected="selected"' : ''; ?>>1</option>
                 <option value="2" <?php echo $chars == '2' ? 'selected="selected"' : ''; ?>>2</option>
                 <option value="3" <?php echo $chars == '3' ? 'selected="selected"' : ''; ?>>3</option>
