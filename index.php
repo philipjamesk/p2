@@ -66,7 +66,7 @@
             <div class="form-group">
               <input type="checkbox" name="addNumber" <?=$numCheck?>>
               <label for="addNumber">Random number
-              <select name="numbers">
+              <select name="numbers" id="addNumbers">
                 <option value="1" <?php echo $numbers == '1' ? 'selected="selected"' : ''; ?>>1</option>
                 <option value="2" <?php echo $numbers == '2' ? 'selected="selected"' : ''; ?>>2</option>
                 <option value="3" <?php echo $numbers == '3' ? 'selected="selected"' : ''; ?>>3</option>
@@ -99,7 +99,7 @@
             </div>
             <div class="form-group">
               <label for="seperator">Chose a seperator:</label>
-              <select name="seperator">
+              <select name="seperator" id="seperator">
                 <option value="" <?php echo $seperator == '' ? 'selected="selected"' : ''; ?>>(none) ''</option>
                 <option value=" " <?php echo $seperator == ' ' ? 'selected="selected"' : ''; ?>>(space) ' '</option>
                 <option value="-" <?php echo $seperator == '-' ? 'selected="selected"' : ''; ?>>hyphen '-'</option>
@@ -115,7 +115,7 @@
               <label class="radio-inline">
                 <input type="radio" name="case" value="uppercase" <?php echo $case == 'uppercase' ? 'checked' : ''; ?>>UPPERCASE</label>
             </div>
-            <button class="btn btn-default center-block" type="submit"3>Generate Password</button>
+            <button class="btn btn-default center-block" type="submit">Generate Password</button>
           </form>
         </div></div>
         <div class="col-lg-4"></div>
